@@ -29,7 +29,7 @@ class MongodbCommunity < Formula
     end
 
     prefix.install Dir["*"]
-    #prefix.install_symlink "macos_mongodb.plist" => "#{plist_name}.plist"
+    prefix.install_symlink "macos_mongodb.plist" => "#{plist_name}.plist"
   end
 
   def post_install
@@ -41,7 +41,11 @@ class MongodbCommunity < Formula
   end
 
   service do
-    name macos: "#{plist_name}"
+    run [opt_bin/"mongod", "--config", etc/"mongod.conf"]
+    keep_alive true
+    working_dir var
+    log_path var/"log/mongodb/mongod.log"
+    error_log_path var/"log/mongodb/mongod.error.log"
   end
 
   def mongodb_conf
