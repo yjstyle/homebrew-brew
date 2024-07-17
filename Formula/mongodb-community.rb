@@ -20,16 +20,7 @@ class MongodbCommunity < Formula
   conflicts_with "mongodb-enterprise"
 
   def install
-    inreplace "macos_mongodb.plist" do |s|
-      s.gsub!("\#{plist_name}", "#{plist_name}")
-      s.gsub!("\#{opt_bin}", "#{opt_bin}")
-      s.gsub!("\#{etc}", "#{etc}")
-      s.gsub!("\#{HOMEBREW_PREFIX}", "#{HOMEBREW_PREFIX}")
-      s.gsub!("\#{var}", "#{var}")
-    end
-
     prefix.install Dir["*"]
-    prefix.install_symlink "macos_mongodb.plist" => "#{plist_name}.plist"
   end
 
   def post_install
