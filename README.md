@@ -9,7 +9,7 @@ This is a custom [Homebrew](https://brew.sh) tap for official MongoDB software.
 You can add the custom tap in a MacOS terminal session using:
 
 ```bash
-brew tap mongodb/brew
+brew tap yjstyle/linuxmongo
 ```
 
 ## Installing Formulae
